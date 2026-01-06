@@ -1,25 +1,63 @@
-import logo from './logo.svg';
-import './App.css';
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import Navbar from "./Components/Navbar";
+//Login
+import LogIn from "./Components/Login";
+//Signup
+import TeacherStudentSignup from "./Components/TeacherStudentSignup";
+//Student sections
+import StudentHome from "./Components/StudentHome";
+import StudentsLearning from "./Components/StudentsLearning";
+import Quiz from "./Components/Quiz";
+import Dashboard from "./Components/Dashboard";
+import QuizPlay from "./Components/QuizPlay";
+//Teacher Section
+import TeacherHome from "./Components/TeacherHome";
+import CreateQuiz from "./Components/CreateQuiz";
+import TeacherDashboard from "./Components/TeacherDashboard";
+import QuizTaker from "./Components/QuizTaker";
+//QUizs
+import MathPuzzle from "./Components/Games/MathPuzzle";
+import MemoryMatch from "./Components/Games/MemoryMatch";
+import SolarSystem from "./Components/Games/SolarSystem";
+import BinaryBlitz from "./Components/Games/BinaryBlitz";
+
+// TeacherSignup will be added later
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router>
+      <Navbar/>
+      <Routes>
+        {/* Default Login */}
+        <Route path="/" element={<LogIn />} />
+
+        {/*  SignUp */}
+        <Route path="/signup" element={<TeacherStudentSignup />} />
+
+        {/* Student FUntionality */}
+        <Route path="/studenthome" element={<StudentHome />}/>
+        <Route path="/studentslearning" element={<StudentsLearning />}/>
+        <Route path="/quiz" element={<Quiz />} />
+        <Route path="/dashboard" element={<Dashboard />} />
+        <Route path="/quiz/:subject" element={<QuizPlay />} />
+
+        {/* Teacher FUntionality */}
+        <Route path="/teacherhome" element={<TeacherHome />}/>
+        <Route path="/createquiz" element={<CreateQuiz />}/>
+        <Route path="/teacherdashboard" element={<TeacherDashboard />}/>
+        <Route path="/quiz/start" element={<QuizTaker />}/>
+
+        
+        {/* Games Routes */}
+        <Route path="/games/mathpuzzle" element={<MathPuzzle />} />
+        <Route path="/games/memorymatch" element={<MemoryMatch />} />
+        <Route path="/games/solarsystem" element={<SolarSystem />} />
+        <Route path="/games/binaryblitz" element={<BinaryBlitz />} />
+      </Routes>
+    </Router>
   );
 }
 
 export default App;
+
+
